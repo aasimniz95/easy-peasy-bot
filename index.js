@@ -89,6 +89,52 @@ controller.hears('hello', 'direct_message', function (bot, message) {
     bot.reply(message, 'Hello!');
 });
 
+controller.hears('abra', 'direct_message', function (bot, message) {
+    bot.reply(message, 'Kadabra!');
+});
+
+// controller.on('direct_message,mention,direct_mention', function (bot, message) {
+//     bot.api.reactions.add({
+//        timestamp: message.ts,
+//        channel: message.channel,
+//        name: 'robot_face',
+//    }, function (err) {
+//        if (err) {
+//            console.log(err)
+//        }
+//        bot.reply(message, 'I heard you loud and clear boss.');
+//    });
+// })
+
+controller.hears('interactive', 'direct_message', function(bot, message) {
+
+    bot.reply(message, {
+        attachments:[
+            {
+                title: 'Do you want to have a sales call?',
+                callback_id: '123',
+                attachment_type: 'default',
+                actions: [
+                    {
+                        "name":"yes",
+                        "text": "Yes",
+                        "value": "yes",
+                        "type": "button",
+                    },
+                    {
+                        "name":"no",
+                        "text": "No",
+                        "value": "no",
+                        "type": "button",
+                    }
+                ]
+            }
+        ],
+        response_url: "http://3.17.57.237:8080/",
+    });
+    // console.log(req.body)
+});
+
 
 /**
  * AN example of what could be:
