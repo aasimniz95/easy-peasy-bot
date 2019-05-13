@@ -82,12 +82,52 @@ controller.on('rtm_close', function (bot) {
 // BEGIN EDITING HERE!
 
 controller.on('bot_channel_join', function (bot, message) {
-    bot.reply(message, "I'm here!")
+    bot.reply(message, "Thanks for joining the channel! I am here to handle specific requests such as sales and escalating technical issues.")
 });
 
-controller.hears('hello', 'direct_message', function (bot, message) {
-    bot.reply(message, 'Hello!');
+controller.hears('direct_mention', 'direct_message', function (bot, message) {
+    bot.reply(message, "Hi Mom");
+    console.log('hi');
+    
+// bot.createConversation(message, function(err, convo) {
+
+//     convo.addMessage({
+//         text:'You said you needed a sales call! Thanks, we just need a few more details: Could you please give us the following information:  the customer, the agenda, and whether theyve seen a demo before, as well as whether technical folks will be on the call?',
+//     }, 'yes_thread');
+
+//     convo.addMessage({
+//         text:'No, if you need something else then please continue to post.'
+//     }, 'no_thread');
+
+//     convo.addMessage({
+//         text: 'Sorry I did not understand your request.',
+//         action: 'default',
+//     }, 'bad_response');
+
+//     convo.addQuestion('Do you have a sales related question?', [
+//     {
+//         pattern: 'yes',
+//         callback: function(response, convo) {
+//             convo.gotoThread('yes_thread');
+//         },
+//     },
+//     {
+//         pattern: 'no',
+//         callback: function(response, convo) {
+//             convo.gotoThread('no_thread');
+//         },
+//     },
+//     {
+//         default: true, 
+//         callback: function(response, convo) {
+//             convo.gotoThread('bad_response');
+//         },
+//     }
+//     ], {}, 'default');
+//   });
 });
+
+controller.on()
 
 
 /**
